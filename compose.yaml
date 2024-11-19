@@ -1,0 +1,13 @@
+services:
+  sotf:
+    build: .
+    image: sotf-server
+    container_name: sotf
+    restart: unless-stopped
+    stop_grace_period: 90s
+    ports:
+      - "8766:8766/udp" # Game port
+      - "27016:27016/udp" # Query port
+      - "9700:9700/udp" # Blob sync port
+    volumes:
+      - ./server:/home/steam/sotf
