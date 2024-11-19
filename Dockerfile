@@ -55,7 +55,7 @@ RUN mkdir "$SOTF_PATH" \
     && ln -s ${STEAM_SDK32_PATH}/steamclient.so ${STEAM_SDK32_PATH}/steamservice.so \
     && curl -sqL "$GE_PROTON_URL" | tar zxvf - -C "${STEAMCMD_PATH}/compatibilitytools.d/" 
     
-COPY entrypoint.sh /home/steam/entrypoint.sh
+COPY --chown=stem:steam --chmod=550 entrypoint.sh /home/steam/entrypoint.sh
 
 WORKDIR /home/steam
 
